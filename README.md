@@ -1,0 +1,2 @@
+# What is this project?
+This is the continuation to flask web applications that I have been making. This one is much more complex and big and has a lot of essential quality of life features. And after this the same app will be made using __Django__.
