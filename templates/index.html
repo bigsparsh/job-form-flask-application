@@ -11,7 +11,7 @@
         <h1 class="mt-4 mb-4">
             Job Application
         </h1>
-        <form>
+        <form method="post">
             <div class="form-group mb-4">
                 <label for="first_name">First Name:</label>
                 <input class="form-control" type="text" id="first_name" name="first_name" required>
@@ -30,18 +30,18 @@
             </div>
             <div class="form-group mb-4">
                 <label>Current Occupation:</label><br>
-                <div id="occupation" class="btn-group-vertical">
-                    <input class="btn-check form-control" type="radio" name="occupation" id="employed">
+                <div id="xxx" class="btn-group-vertical">
+                    <input class="btn-check form-control" type="radio" name="occupation" id="employed" value="employed">
                     <label class="btn btn-outline-secondary" for="employed">Employed</label>
-                    <input class="btn-check form-control" type="radio" name="occupation" id="unemployed">
+                    <input class="btn-check form-control" type="radio" name="occupation" id="unemployed" value="unemployed">
                     <label class="btn btn-outline-secondary" for="unemployed">Unemployed</label>
-                    <input class="btn-check form-control" type="radio" name="occupation" id="self-employed">
+                    <input class="btn-check form-control" type="radio" name="occupation" id="self-employed" value="self-employed">
                     <label class="btn btn-outline-secondary" for="self-employed">Self Employed</label>
-                    <input class="btn-check form-control" type="radio" name="occupation" id="student">
+                    <input class="btn-check form-control" type="radio" name="occupation" id="student" value="student">
                     <label class="btn btn-outline-secondary" for="student">Student</label>
                 </div>
             </div>
-            <button class="btn btn-secondary mb-4" type="button">Submit</button>
+            <button class="btn btn-secondary mb-4" type="submit">Submit</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
