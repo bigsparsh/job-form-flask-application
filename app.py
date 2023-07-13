@@ -1,10 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "sparshsinghpythonprojectflask"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = "pythonsample4@gmail.com"
+app.config["MAIL_PASSWORD"] = "nvruknpagdzshqun"
+
+mail = Mail(app)
+
 db = SQLAlchemy(app)
 
 
@@ -31,6 +40,23 @@ def index():
                     occupation=occupation)
         db.session.add(form)
         db.session.commit()
+
+        text_message = f"Hey, {first_name} your job application has been submitted successfully.\n" \
+                       f"We hope we can consider you for the job, after enquiry we will be contacting" \
+                       f"you if you are the one for the job." \
+                       f"The data you have submitted is below:\n" \
+                       f"Name: {first_name} {last_name}\n" \
+                       f"Email: {email}\n" \
+                       f"Starting Date: {start_date}\n" \
+                       f"Occupation: {occupation}.\n" \
+                       f"- Our team"
+        message = Message(subject="Job Application form Submitted",
+                          sender=app.config["MAIL_USERNAME"],
+                          recipients=[email],
+                          body=text_message)
+        mail.send(message)
+
+        flash(f"{first_name}, your form was submitted successfully.", "sucess")
 
     return render_template("index.html")
 
